@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE QuickLink PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<QuickLink action="workflow" category="Access" messageKey="Preferred_Attribute" name="Preferred_Attribute" ordering="6">
+  <Attributes>
+    <Map>
+      <entry key="requester">
+        <value>
+          <Script>
+            <Source>
+              return currentUser.getName();
+
+            </Source>
+          </Script>
+        </value>
+      </entry>
+      <entry key="workflowName" value="Preferred_Attribute_Change_Form"/>
+    </Map>
+  </Attributes>
+  <QuickLinkOptions allowOther="true">
+    <DynamicScopeRef>
+      <Reference class="sailpoint.object.DynamicScope" name="Manager"/>
+    </DynamicScopeRef>
+  </QuickLinkOptions>
+</QuickLink>

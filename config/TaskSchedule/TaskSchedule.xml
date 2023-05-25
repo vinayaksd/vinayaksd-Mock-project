@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE sailpoint PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<sailpoint>
+<TaskSchedule lastExecution="1684401849169" name="Check sunset requests for notifications daily" nextExecution="1684472400000">
+  <Arguments>
+    <Map>
+      <entry key="executor" value="Check Sunset Requests"/>
+      <entry key="nextActualFireTime" value="1684472400000"/>
+    </Map>
+  </Arguments>
+  <CronExpressions>
+    <String>0 0 0 * * ?</String>
+  </CronExpressions>
+  <Description>Check for Roles and Entitlements that are about to expire and send a notification every day at midnight</Description>
+</TaskSchedule>
+<TaskSchedule lastExecution="1684420200000" name="HR-120 minutes, 7 days a week" nextExecution="1684427400000">
+  <Arguments>
+    <Map>
+      <entry key="executor" value="Aggregate-HR01"/>
+      <entry key="launcher" value="spadmin"/>
+      <entry key="nextActualFireTime" value="1684427400000"/>
+    </Map>
+  </Arguments>
+  <CronExpressions>
+    <String>0 0 */2 ? * * </String>
+  </CronExpressions>
+</TaskSchedule>
+<TaskSchedule lastExecution="1684401849160" name="Check expired work items daily" nextExecution="1684472400000">
+  <Arguments>
+    <Map>
+      <entry key="executor" value="Check Expired Work Items"/>
+      <entry key="nextActualFireTime" value="1684472400000"/>
+    </Map>
+  </Arguments>
+  <CronExpressions>
+    <String>0 0 0 * * ?</String>
+  </CronExpressions>
+  <Description>Check for expired work items every day at midnight.</Description>
+</TaskSchedule>
+<TaskSchedule lastExecution="1684209791634" name="HR Self-once every week at 2AM" nextExecution="1684780200000">
+  <Arguments>
+    <Map>
+      <entry key="TaskSchedule.host"/>
+      <entry key="executor" value="Aggregate-HR Self Service"/>
+      <entry key="launcher" value="1030"/>
+      <entry key="nextActualFireTime" value="1684780200000"/>
+    </Map>
+  </Arguments>
+  <CronExpressions>
+    <String>0 0 0 ? * 3 </String>
+  </CronExpressions>
+  <Description/>
+</TaskSchedule>
+<TaskSchedule lastExecution="1684423500000" name="Perform maintenance" nextExecution="1684423800000">
+  <Arguments>
+    <Map>
+      <entry key="executor" value="Perform Maintenance"/>
+      <entry key="nextActualFireTime" value="1684423800000"/>
+    </Map>
+  </Arguments>
+  <CronExpressions>
+    <String>0 0/5 * * * ?</String>
+  </CronExpressions>
+  <Description>Perform maintenance every five minutes.</Description>
+</TaskSchedule>
+<TaskSchedule lastExecution="1684420200000" name="Enterprise Directory-every  60 minutes, 7 days a week." nextExecution="1684423800000">
+  <Arguments>
+    <Map>
+      <entry key="executor" value="Aggregate-Enterprise Directory"/>
+      <entry key="launcher" value="spadmin"/>
+      <entry key="nextActualFireTime" value="1684423800000"/>
+    </Map>
+  </Arguments>
+  <CronExpressions>
+    <String>0 0 * ? * * </String>
+  </CronExpressions>
+</TaskSchedule>
+<TaskSchedule lastExecution="1684401849179" name="Perform Identity Request Maintenance" nextExecution="1684479600000">
+  <Arguments>
+    <Map>
+      <entry key="executor" value="Perform Identity Request Maintenance"/>
+      <entry key="nextActualFireTime" value="1684479600000"/>
+    </Map>
+  </Arguments>
+  <CronExpressions>
+    <String>0 0 2 * * ?</String>
+  </CronExpressions>
+  <Description>Perform Identity Request maintenance every day at 2 AM.</Description>
+</TaskSchedule>
+<TaskSchedule name="Manager Certification-6months [4/28/23, 12:46 PM]" nextExecution="1698477420000">
+  <Arguments>
+    <Map>
+      <entry key="certificationDefinitionId" value="Manager Certification [4/28/23, 11:17 AM]"/>
+      <entry key="executor" value="Certification Manager"/>
+      <entry key="launcher" value="spadmin"/>
+      <entry key="nextActualFireTime" value="1698477420000"/>
+      <entry key="resultName" value="Manager Certification-6months [4/28/23, 12:46 PM]"/>
+    </Map>
+  </Arguments>
+  <CronExpressions>
+    <String>0 47 12 28 4/6 ? *</String>
+  </CronExpressions>
+  <Description>Global Manager Access Review</Description>
+</TaskSchedule>
+<TaskSchedule lastExecution="1684055953923" name="HR-every Sunday at 2AM" nextExecution="1684656000000">
+  <Arguments>
+    <Map>
+      <entry key="executor" value="Aggregate-HR01"/>
+      <entry key="launcher" value="spadmin"/>
+      <entry key="nextActualFireTime" value="1684656000000"/>
+    </Map>
+  </Arguments>
+  <CronExpressions>
+    <String>0 30 13 ? * SUN </String>
+  </CronExpressions>
+</TaskSchedule>
+<TaskSchedule lastExecution="1684401849113" name="Check expired mitigations daily" nextExecution="1684472400000">
+  <Arguments>
+    <Map>
+      <entry key="executor" value="Check Expired Mitigations"/>
+      <entry key="nextActualFireTime" value="1684472400000"/>
+    </Map>
+  </Arguments>
+  <CronExpressions>
+    <String>0 0 0 * * ?</String>
+  </CronExpressions>
+  <Description>Check for expired mitigations every day at midnight.</Description>
+</TaskSchedule>
+</sailpoint>

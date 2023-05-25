@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Application connector="sailpoint.connector.JDBCConnector" featuresString="DISCOVER_SCHEMA, PROVISIONING, SYNC_PROVISIONING, DIRECT_PERMISSIONS, SEARCH, ENABLE, UNLOCK, ADDITIONAL_ACCOUNT_REQUEST, ACCOUNT_ONLY_REQUEST" icon="databaseIcon" name="HR Self Service" profileClass="" type="JDBC">
+  <AccountCorrelationConfig>
+    <Reference class="sailpoint.object.CorrelationConfig" name="Correlation-HR Self Service"/>
+  </AccountCorrelationConfig>
+  <Attributes>
+    <Map>
+      <entry key="Group.SQL" value="select * from ohrm_user_role"/>
+      <entry key="Group.aggregationMode">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="Group.deltaTable"/>
+      <entry key="Group.driverClass" value="%%HR-SElf_driverClass%%"/>
+      <entry key="Group.getDeltaSQL"/>
+      <entry key="Group.getDirectPermObjectSQL"/>
+      <entry key="Group.getObjectSQL"/>
+      <entry key="Group.isPermissionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="Group.mergeRows">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="Group.password" value="%%Grp_password%%"/>
+      <entry key="Group.url" value="%%HR-SElf_URL%%"/>
+      <entry key="Group.useExecuteQuery">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="Group.useStoredProcedureDelta">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="Group.useStoredProcedureDirectPermission">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="Group.useStoredProcedureGetObject">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="Group.useStoredProcedureSqlStmt">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="Group.user" value="root"/>
+      <entry key="SQL" value="select * from ohrm_user"/>
+      <entry key="acctAggregationEnd">
+        <value>
+          <Date>1684288923125</Date>
+        </value>
+      </entry>
+      <entry key="acctAggregationStart">
+        <value>
+          <Date>1684288916753</Date>
+        </value>
+      </entry>
+      <entry key="afterProvisioningRule"/>
+      <entry key="aggregationMode">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="beforeProvisioningRule"/>
+      <entry key="compositeDefinition"/>
+      <entry key="connMaxRetry" value="3"/>
+      <entry key="connRetryEnable">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="connWaitTimeForRetry" value="2"/>
+      <entry key="deltaTable"/>
+      <entry key="driverClass" value="%%HR-SElf_driverClass%%"/>
+      <entry key="getDeltaSQL"/>
+      <entry key="isPermissionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="jdbcCreateProvisioningRule" value="Rule-Provisioning_Create"/>
+      <entry key="jdbcDeleteProvisioningRule" value="Rule-Provisioning_Delete"/>
+      <entry key="jdbcDisableProvisioningRule" value="Rule-Provisioning_Disable"/>
+      <entry key="jdbcExceptionBucketing">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="mergeRows">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionAttributeScope" value="entitlements"/>
+      <entry key="nativeChangeDetectionAttributes"/>
+      <entry key="nativeChangeDetectionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionOperations"/>
+      <entry key="noPermissions" value="false"/>
+      <entry key="operations" value="Create, Modify, Delete, Enable, Disable, Unlock"/>
+      <entry key="partitionMode">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="partitionStatements"/>
+      <entry key="password" value="%%HR-SElf_Password%%"/>
+      <entry key="provisionRule" value="operationRule"/>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="templateApplication" value="JDBC Template"/>
+      <entry key="testConnSQL"/>
+      <entry key="url" value="%%HR-SElf_URL%%"/>
+      <entry key="useExecuteQuery">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureDelta">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureDirectPermission">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureGetObject">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedurePartition">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureSqlStmt">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureTestConn">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="user" value="root"/>
+    </Map>
+  </Attributes>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <ProvisioningForms>
+    <Form objectType="account" type="Create">
+      <Attributes>
+        <Map>
+          <entry key="pageTitle"/>
+        </Map>
+      </Attributes>
+      <Section name="Section 1">
+        <Field displayName="user_role_id" name="user_role_id" type="string" value="2"/>
+        <Field displayName="emp_number" name="emp_number" type="string">
+          <Script>
+            <Source>return identity.getAttribute("emp_number");</Source>
+          </Script>
+        </Field>
+        <Field displayName="user_name" name="user_name" type="string">
+          <Script>
+            <Source>return identity.getFullName();</Source>
+          </Script>
+        </Field>
+        <Field displayName="user_password" name="user_password" type="string">
+          <Script>
+            <Source>return "Naser@123";</Source>
+          </Script>
+        </Field>
+      </Section>
+    </Form>
+  </ProvisioningForms>
+  <Schemas>
+    <Schema displayAttribute="emp_number" identityAttribute="emp_number" instanceAttribute="" nativeObjectType="account" objectType="account" permissionsRemediationModificationType="None">
+      <AttributeDefinition name="id" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition entitlement="true" managed="true" multi="true" name="user_role_id" schemaObjectType="Group" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="emp_number" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="user_name" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="user_password" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="deleted" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="status" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="date_entered" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="date_modified" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="modified_user_id" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="created_by" type="string">
+        <Description/>
+      </AttributeDefinition>
+    </Schema>
+    <Schema aggregationType="group" descriptionAttribute="" displayAttribute="name" identityAttribute="id" instanceAttribute="" nativeObjectType="Group" objectType="Group" permissionsRemediationModificationType="None">
+      <AttributeDefinition name="id" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="name" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="display_name" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="is_assignable" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="is_predefined" type="string">
+        <Description/>
+      </AttributeDefinition>
+    </Schema>
+  </Schemas>
+  <ApplicationScorecard/>
+</Application>

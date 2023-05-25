@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE sailpoint PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<sailpoint>
+<CertificationGroup name="Entitlement Owner Certification" status="Active" totalCertifications="8" type="Certification">
+  <Definition>
+    <Reference class="sailpoint.object.CertificationDefinition" name="Entitlement Owner Certification [5/2/23, 7:46 PM]"/>
+  </Definition>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="CISO’s-Group"/>
+  </Owner>
+</CertificationGroup>
+<CertificationGroup completedCertifications="2" name="Entitlement Owner Certification-01" percentComplete="40" status="Active" totalCertifications="5" type="Certification">
+  <Definition>
+    <Reference class="sailpoint.object.CertificationDefinition" name="Entitlement Owner Certification [5/11/23, 1:04 AM]"/>
+  </Definition>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="CISO’s-Group"/>
+  </Owner>
+</CertificationGroup>
+<CertificationGroup completedCertifications="7" name="Manager Certification-6months-01" percentComplete="54" status="Active" totalCertifications="13" type="Certification">
+  <Attributes>
+    <Map>
+      <entry key="scheduleFrequency" value="Once"/>
+    </Map>
+  </Attributes>
+  <Definition>
+    <Reference class="sailpoint.object.CertificationDefinition" name="Manager Certification [4/28/23, 12:15 PM]"/>
+  </Definition>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+</CertificationGroup>
+<CertificationGroup completedCertifications="38" name="Manager Certification-6.1 [5/16/23, 6:04:59 PM IST]" percentComplete="68" status="Active" totalCertifications="56" type="Certification">
+  <Definition>
+    <Reference class="sailpoint.object.CertificationDefinition" name="Manager Certification [5/16/23, 6:04 PM]"/>
+  </Definition>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+</CertificationGroup>
+</sailpoint>

@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Application authoritative="true" connector="sailpoint.connector.JDBCConnector" featuresString="DISCOVER_SCHEMA, PROVISIONING, SYNC_PROVISIONING, DIRECT_PERMISSIONS, SEARCH, ENABLE, UNLOCK, ADDITIONAL_ACCOUNT_REQUEST, ACCOUNT_ONLY_REQUEST" icon="databaseIcon" name="HR" profileClass="" type="JDBC">
+  <AccountCorrelationConfig>
+    <Reference class="sailpoint.object.CorrelationConfig" name="Correlation-HR"/>
+  </AccountCorrelationConfig>
+  <Attributes>
+    <Map>
+      <entry key="SQL" value="SELECT  hhe.emp_number,&#13;&#10;&#13;&#10;        hher.erep_sup_emp_number,&#13;&#10;&#13;&#10;        hhe.employee_id,&#13;&#10;&#13;&#10;        hhe.emp_lastname,&#13;&#10;&#13;&#10;        hhe.emp_firstname,&#13;&#10;&#13;&#10;        hhe.emp_middle_name,&#13;&#10;&#13;&#10;        CONCAT(hhe.emp_lastname, &quot;, &quot;, emp_firstname, &quot; &quot;, emp_middle_name) as fullname,&#13;&#10;&#13;&#10;        hhe.emp_birthday,&#13;&#10;&#13;&#10;        hhe.emp_gender,&#13;&#10;&#13;&#10;        hhe.emp_marital_status,&#13;&#10;&#13;&#10;        hhe.emp_other_id,&#13;&#10;&#13;&#10;        CONCAT(oes.name) as emp_status,&#13;&#10;&#13;&#10;        hhe.job_title_code,&#13;&#10;&#13;&#10;        ojt.job_title,&#13;&#10;&#13;&#10;CONCAT(hhe.work_station) as department_code,&#13;&#10;&#13;&#10;        CONCAT(os.name) as department,&#13;&#10;&#13;&#10;        hhe.emp_street1,&#13;&#10;&#13;&#10;        hhe.city_code,&#13;&#10;&#13;&#10;        CONCAT(hhe.coun_code) as iso2,&#13;&#10;&#13;&#10;        hhc.iso3,&#13;&#10;&#13;&#10;        CONCAT(hhc.cou_name) as country,&#13;&#10;&#13;&#10;        hhc.numcode,&#13;&#10;&#13;&#10;        IF(LENGTH(hhe.provin_code) &gt; 2, hhe.provin_code, hhp.province_name) as province,&#13;&#10;&#13;&#10;        hhe.emp_zipcode,&#13;&#10;&#13;&#10;        hhe.emp_hm_telephone,&#13;&#10;&#13;&#10;        hhe.emp_mobile,&#13;&#10;&#13;&#10;        hhe.emp_work_telephone,&#13;&#10;&#13;&#10;        hhe.joined_date,&#13;&#10;&#13;&#10;        oet.termination_date,&#13;&#10;&#13;&#10;        (SELECT MIN(date)&#13;&#10;&#13;&#10;        FROM orangehrm.ohrm_leave&#13;&#10;&#13;&#10;        WHERE emp_number = hhe.emp_number AND status = 2) as leave_start,&#13;&#10;&#13;&#10;        (SELECT MAX(date)&#13;&#10;&#13;&#10;        FROM orangehrm.ohrm_leave&#13;&#10;&#13;&#10;        WHERE emp_number = hhe.emp_number AND status = 2) as leave_end&#13;&#10;&#13;&#10;        FROM orangehrm.hs_hr_employee hhe&#13;&#10;&#13;&#10;        LEFT JOIN orangehrm.ohrm_employment_status oes on hhe.emp_status = oes.id&#13;&#10;&#13;&#10;        LEFT JOIN orangehrm.ohrm_job_title ojt on hhe.job_title_code = ojt.id&#13;&#10;&#13;&#10;        LEFT JOIN orangehrm.ohrm_subunit os on hhe.work_station = os.id&#13;&#10;&#13;&#10;        LEFT JOIN orangehrm.hs_hr_country hhc on hhe.coun_code = hhc.cou_code&#13;&#10;&#13;&#10;        LEFT JOIN orangehrm.hs_hr_province hhp on hhe.provin_code = hhp.province_code&#13;&#10;&#13;&#10;        LEFT JOIN orangehrm.ohrm_emp_termination oet on hhe.termination_id = oet.id&#13;&#10;&#13;&#10;        LEFT JOIN orangehrm.hs_hr_emp_reportto hher on hher.erep_sub_emp_number = hhe.emp_number;"/>
+      <entry key="acctAggregationEnd">
+        <value>
+          <Date>1684420257239</Date>
+        </value>
+      </entry>
+      <entry key="acctAggregationStart">
+        <value>
+          <Date>1684420200404</Date>
+        </value>
+      </entry>
+      <entry key="afterProvisioningRule"/>
+      <entry key="aggregationMode">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="beforeProvisioningRule"/>
+      <entry key="buildMapRule" value="Rule-Create_Email"/>
+      <entry key="compositeDefinition"/>
+      <entry key="connMaxRetry" value="3"/>
+      <entry key="connRetryEnable">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="connWaitTimeForRetry" value="2"/>
+      <entry key="deltaTable"/>
+      <entry key="driverClass" value="%%HR_driverClass%%"/>
+      <entry key="getDeltaSQL"/>
+      <entry key="isPermissionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="jdbcExceptionBucketing">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="managerCorrelationFilter">
+        <value>
+          <Filter operation="EQ" property="emp_number" value="erep_sup_emp_number"/>
+        </value>
+      </entry>
+      <entry key="mergeRows">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionAttributeScope" value="entitlements"/>
+      <entry key="nativeChangeDetectionAttributes"/>
+      <entry key="nativeChangeDetectionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionOperations"/>
+      <entry key="noPermissions" value="false"/>
+      <entry key="operations" value="Create, Modify, Delete, Enable, Disable, Unlock"/>
+      <entry key="partitionMode">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="partitionStatements"/>
+      <entry key="password" value="%%HR_password%%"/>
+      <entry key="provisionRule" value="operationRule"/>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="templateApplication" value="JDBC Template"/>
+      <entry key="testConnSQL"/>
+      <entry key="url" value="%%HR_url%%"/>
+      <entry key="useExecuteQuery">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureDelta">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureDirectPermission">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureGetObject">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedurePartition">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureSqlStmt">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureTestConn">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="user" value="root"/>
+    </Map>
+  </Attributes>
+  <CustomizationRule>
+    <Reference class="sailpoint.object.Rule" name="Rule-IIQDisabled"/>
+  </CustomizationRule>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <Schemas>
+    <Schema displayAttribute="emp_number" identityAttribute="emp_number" instanceAttribute="" nativeObjectType="account" objectType="account" permissionsRemediationModificationType="None">
+      <AttributeDefinition name="emp_number" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="erep_sup_emp_number" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="employee_id" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="emp_lastname" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="emp_firstname" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="emp_middle_name" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="fullname" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="emp_birthday" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="emp_gender" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="emp_marital_status" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="emp_other_id" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="emp_status" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="job_title_code" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="job_title" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="department_code" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="department" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="emp_street1" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="city_code" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="iso2" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="iso3" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="country" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="numcode" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="province" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="emp_zipcode" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="emp_hm_telephone" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="emp_mobile" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="emp_work_telephone" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="joined_date" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="termination_date" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="leave_start" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="leave_end" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="email" type="string">
+        <Description/>
+      </AttributeDefinition>
+    </Schema>
+  </Schemas>
+  <ApplicationScorecard/>
+</Application>
